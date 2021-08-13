@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
+## View this project
+
+This project was deployed and can be viewed over at https://anezgabriel-letters-game.netlify.app/
+
 ## How to run the project
 
 In the project directory, run the following commands:
