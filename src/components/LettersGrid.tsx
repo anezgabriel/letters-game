@@ -2,11 +2,7 @@ import React from 'react';
 import { data } from '../app/data';
 import Letter from './Letter';
 
-interface LettersGridProps {
-  handleClick: (letter: string) => void;
-}
-
-const LettersGrid: React.FC<LettersGridProps> = () => {
+const LettersGrid: React.FC = () => {
   return (
     <div className="letters-grid">
       {data.map((letter) => (

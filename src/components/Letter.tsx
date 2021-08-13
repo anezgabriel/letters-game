@@ -22,7 +22,7 @@ const Letter: React.FC<LetterProps> = ({ letter }) => {
     } else if (!word.includes(letter) && isClicked) {
       setIsClicked(false);
     }
-  }, [word]);
+  }, [word, isClicked, letter]);
 
   return (
     <button onClick={() => handleClick(letter)} className={classes}>
