@@ -1,58 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
+import React, { useState } from 'react';
+import ClearButton from './components/ClearButton';
+import SelectedWord from './components/SelectedWord';
+import LettersGrid from './components/LettersGrid';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [word, setWord] = useState('hola');
+
+  setTimeout(() => {
+    setWord('');
+  }, 1000);
+
+  const handleLetterClick = (letter: string) => {
+    setWord((previousWord) => previousWord + letter);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
+    <div className="app-container">
+      <div className="app-grid">
+        <ClearButton />
+        <LettersGrid handleClick={handleLetterClick} />
+        <SelectedWord />
+      </div>
     </div>
   );
-}
+};
 
 export default App;

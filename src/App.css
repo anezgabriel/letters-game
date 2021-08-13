@@ -1,39 +1,120 @@
-.App {
-  text-align: center;
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'button'
+    'letters'
+    'word';
+}
+
+.clear-button-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  grid-area: button;
+}
+
+.clear-button-wrapper button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  background: transparent;
+  border: none;
+  color: #cecece;
+  font-size: 18px;
+}
+
+.clear-button-wrapper .close-icon {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #d8d8d8;
+}
+
+.clear-button-wrapper .bar1,
+.clear-button-wrapper .bar2 {
+  position: absolute;
+  display: block;
+  background-color: #fff;
+  height: 1.25px;
+  width: 30px;
+}
+
+.clear-button-wrapper .bar1 {
+  transform: rotate(-45deg);
+}
+
+.clear-button-wrapper .bar2 {
+  transform: rotate(45deg);
+}
+
+.letters-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  margin-top: 100px;
+  margin-bottom: 60px;
+  grid-area: letters;
+}
+
+.letter {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  background: linear-gradient(to bottom, #fad55f, #f7701f);
+  border: solid 3px #f4505f;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 30px;
+  font-weight: 900;
+  text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.letter.selected {
+  background: linear-gradient(to bottom, #ade74e, #489823);
+  border: none;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-float infinite 3s ease-in-out;
-  }
+.selected-word {
+  border: solid 3px #979797;
+  color: #7ed321;
+  padding: 1rem;
+  font-size: 24px;
+  text-transform: uppercase;
+  grid-area: word;
+  min-height: 66px;
+  max-width: 290px;
 }
 
-.App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-}
-
-.App-link {
-  color: rgb(112, 76, 182);
-}
-
-@keyframes App-logo-float {
-  0% {
-    transform: translateY(0);
+@media (min-width: 991px) {
+  .app-grid {
+    align-items: flex-start;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+    grid-template-areas:
+      'letters button'
+      'letters word';
   }
-  50% {
-    transform: translateY(10px);
+
+  .letters-grid {
+    margin: 0;
   }
-  100% {
-    transform: translateY(0px);
+
+  .selected-word {
+    margin-top: auto;
   }
 }
