@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import {
-  addLetter,
-  selectIndexes,
-  selectWord,
-} from '../features/word/wordSlice';
+import { addLetter, selectIndexes } from '../features/word/wordSlice';
 
 interface LetterProps {
   letter: string;
