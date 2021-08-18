@@ -5,8 +5,8 @@ import Letter from './Letter';
 const LettersGrid: React.FC = () => {
   return (
     <div className="letters-grid">
-      {data.map((letter) => (
-        <Letter key={letter} letter={letter} />
+      {data.map((letter, index) => (
+        <Letter key={letter + index} letter={letter} index={index} />
       ))}
     </div>
   );

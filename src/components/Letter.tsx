@@ -1,31 +1,37 @@
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
-import { addLetter, selectWord } from '../features/word/wordSlice';
+import {
+  addLetter,
+  selectIndexes,
+  selectWord,
+} from '../features/word/wordSlice';
 
 interface LetterProps {
   letter: string;
+  index: number;
 }
 
-const Letter: React.FC<LetterProps> = ({ letter }) => {
+const Letter: React.FC<LetterProps> = ({ letter, index }) => {
   const dispatch = useAppDispatch();
-  const word = useAppSelector(selectWord);
+  const indexes = useAppSelector(selectIndexes);
   const [isClicked, setIsClicked] = useState(false);
   const classes = `letter ${isClicked ? 'selected' : ''}`;
 
-  const handleClick = (val: string) => {
-    dispatch(addLetter(val));
+  const handleClick = () => {
+    dispatch(addLetter({ letter, index }));
   };
 
   useEffect(() => {
-    if (word.includes(letter) && !isClicked) {
+    const found = indexes.findIndex((el) => el === index);
+    if (found !== -1) {
       setIsClicked(true);
-    } else if (!word.includes(letter) && isClicked) {
+    } else {
       setIsClicked(false);
     }
-  }, [word, isClicked, letter]);
+  }, [indexes, setIsClicked, index]);
 
   return (
-    <button onClick={() => handleClick(letter)} className={classes}>
+    <button onClick={handleClick} className={classes}>
       {letter}
     </button>
   );
