@@ -5,7 +5,7 @@ const ROWS = 4;
 export const validateCell = (cellIndex: number, prevIndex: number | null) => {
   if (prevIndex !== 0 && prevIndex === undefined) return true;
 
-  const grid = generateGrid(COLS, ROWS);
+  generateGrid(COLS, ROWS);
   const possibleSiblings = getSiblings(prevIndex!);
   const wasFound = findSibling(cellIndex!, possibleSiblings);
 
