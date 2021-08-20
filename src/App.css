@@ -81,12 +81,21 @@
   font-size: 30px;
   font-weight: 900;
   text-shadow: -1px -1px 2px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease-in;
 }
 
 .letter.selected {
   background: linear-gradient(to bottom, #ade74e, #489823);
   border: none;
   pointer-events: none;
+}
+
+.letter.sibling {
+  border: solid 3px #6870eb;
+}
+
+.letter.sibling.selected {
+  border: none;
 }
 
 .selected-word {
@@ -98,6 +107,11 @@
   grid-area: word;
   min-height: 66px;
   max-width: 290px;
+  transition: all 0.2s ease-in;
+}
+
+.selected-word.found {
+  border: solid 3px #7ed321;
 }
 
 @media (min-width: 991px) {

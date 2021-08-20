@@ -1,23 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 import { dictionary } from '../app/data';
 import { useAppSelector } from '../app/hooks';
 import { selectWord } from '../features/word/wordSlice';
 
 const SelectedWord: React.FC = () => {
   const word = useAppSelector(selectWord);
+  const [wordFound, setWordFound] = useState(false);
+  const classes = `selected-word ${wordFound ? 'found' : ''}`;
 
   useEffect(() => {
     const match = dictionary.find((element) => element === word.toLowerCase());
     if (match) {
-      console.log(match, 'found');
+      setWordFound(true);
+      toast('This word was found in the dictionary');
     } else {
-      console.log('no words were found');
+      setWordFound(false);
     }
   }, [word]);
 
-  return (
-    <input type="text" readOnly={true} value={word} className="selected-word" />
-  );
+  return <input type="text" readOnly={true} value={word} className={classes} />;
 };
 
 export default SelectedWord;
