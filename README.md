@@ -22,4 +22,5 @@ The page will reload if you make edits.<br />
 
 - [TypeScript](https://www.typescriptlang.org/)
 - [Redux](https://redux-toolkit.js.org/)
+- [React hot toast](https://react-hot-toast.com/)
 - Regular CSS for styling, no library, framworks or preprocessor were used.
